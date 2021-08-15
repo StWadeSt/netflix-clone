@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import axios from './axios';
-import requests from './requests';
+import './Row.css';
 
 const base_image_url = "https://image.tmdb.org/t/p/original/";
 
-function Row({ title, fetchUrl }) {
+function Row({ title, fetchUrl, isLarge }) {
     const [ movies, setMovies] = useState([]);
 
     useEffect(() => {
@@ -16,24 +16,22 @@ function Row({ title, fetchUrl }) {
         fetchData();
     }, [fetchUrl]);//if this bracket is empty this useEffect wil only run once.
 
-    console.log(movies);
-
     return (
-        <div className="row">
+        <div className="row"> {/*Container*/}
             {/*Title */}
             <h2>{title}</h2>
 
             <div className="row__movies">
                 {/*Displays all the movies in the row */}
                 {movies.map(movie =>(
-                    <img
-                    
-                    src={`${base_image_url}${movie.poster_path}`} alt={movie.name} />
+                    <img 
+                        key={movie.id}
+                        className={`movie ${isLarge && "row__movieLarge"}`}
+                        src={`${base_image_url}${isLarge? movie.poster_path : movie.backdrop_path }`}
+                        alt={movie.name} 
+                    />
                 ))}
             </div>
-
-            {/*Contaier/Poster */}
-            {/*Title */}
         </div>
     )
 }
