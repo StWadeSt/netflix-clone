@@ -8,6 +8,7 @@
   max-height: 100px;
   object-fit: contain;
   transition: transform 450ms;
+  cursor: pointer;
 }
 .row__movies {
   display: flex;
