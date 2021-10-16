@@ -41,7 +41,6 @@ function Row({ title, fetchUrl, isLarge }) {
 
     return (
         <div className="row"> {/*Container*/}
-            {trailerUrl && <YouTube className="trailer" videoId={trailerUrl} opts={opts} />}
             {/*Title */}
             <h2>{title}</h2>
 
@@ -57,6 +56,7 @@ function Row({ title, fetchUrl, isLarge }) {
                     />
                 ))}
             </div>
+            {trailerUrl && <YouTube className="trailer" videoId={trailerUrl} opts={opts} />}
         </div>
     )
 }
